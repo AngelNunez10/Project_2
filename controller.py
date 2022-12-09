@@ -16,6 +16,9 @@ words_list = ['Thing', 'topic', 'wealth', 'poem', 'shirt', 'worker', 'week', 'he
 
 class Controller(QMainWindow, Ui_MainWindow):
     def __init__(self, *args, **kwargs):
+        """
+        Constructor to set default values for an account object
+        """
         super().__init__(*args, **kwargs)
         self.setupUi(self)
         self.button_enter.clicked.connect(lambda: self.enter())
@@ -24,6 +27,9 @@ class Controller(QMainWindow, Ui_MainWindow):
         self.set_up()
 
     def set_up(self):
+        """
+        Method to set_up the hangman game
+        """
         self.word = random.choice(words_list).lower()
         print(self.word)
         self.max_attempts = 8
@@ -50,6 +56,10 @@ class Controller(QMainWindow, Ui_MainWindow):
 
 
     def enter(self):
+        """
+        Method to check the if the user guessed a letter correctly
+        and the number of attempts
+        """
 
         if self.user_attempts < self.max_attempts:
 
@@ -85,6 +95,10 @@ class Controller(QMainWindow, Ui_MainWindow):
 
 
     def show_images(self):
+        """
+        Method to show the gui images depending on the number
+        of attempt the user is on
+        """
         if self.user_attempts == 1:
             self.img_bar.setVisible(True)
         elif self.user_attempts == 2:
